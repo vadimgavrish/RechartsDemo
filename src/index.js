@@ -2,12 +2,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 
-import './style.css';
-
-// Create component
-const Index = () => {
-  return <div>React to the Future!</div>;
-};
+import App from './containers/App/index.js';
 
 // Render the component to index div
-ReactDom.render(<Index />, document.getElementById('index'));
+ReactDom.render(<App />, document.getElementById('index'));

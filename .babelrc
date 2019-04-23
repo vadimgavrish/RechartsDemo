@@ -1,4 +1,5 @@
 {
   // babel presets that were installed with npm
-  "presets": ["@babel/preset-env","@babel/preset-react"]
+  "presets": ["@babel/preset-env","@babel/preset-react"],
+  "plugins": ["babel-plugin-styled-components"]
 }
