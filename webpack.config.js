@@ -17,6 +17,25 @@ module.exports = {
           // Use babel to transpile ES6 into Es5
           loader: 'babel-loader'
         }
+      },
+      {
+        test: /\.css$/,
+        // First css-laoder resolves the files,
+        // then style-loader loads them into the page
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]_[local]_[hash:bash64]',
+              sourceMap: true,
+            }
+          }
+        ]
       }
     ]
   },
