@@ -9,7 +9,6 @@ const Wrapper = styled.div`
   color: lightgray;
   text-align: center;
   align-items: center;
-  font-family: Helvetica;
   justify-content: center;
   background-color: gray;
 `;
