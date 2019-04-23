@@ -2,6 +2,8 @@
 import React from 'react';
 import styled from 'styled-components'
 
+import Data from './Data.jsx';
+
 const Wrapper = styled.div`
   height: 100vh;
   display: flex;
@@ -9,8 +11,9 @@ const Wrapper = styled.div`
   color: lightgray;
   text-align: center;
   align-items: center;
-  justify-content: center;
   background-color: gray;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const Title = styled.h1`
@@ -24,6 +27,7 @@ class App extends React.Component {
     return (
       <Wrapper>
         <Title>React to the Future!</Title>
+        <Data />
       </Wrapper>
     );
   }
