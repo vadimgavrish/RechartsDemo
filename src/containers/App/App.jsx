@@ -14,11 +14,17 @@ const Wrapper = styled.div`
   background-color: gray;
 `;
 
+const Title = styled.h1`
+  font-size: 50px;
+  font-weight: 500;
+  color: lightgray;
+`;
+
 class App extends React.Component {
   render() {
     return (
       <Wrapper>
-        React to the Future!
+        <Title>React to the Future!</Title>
       </Wrapper>
     );
   }
