@@ -4,20 +4,25 @@ import styled from 'styled-components'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as dataActions from '../redux/actions/dataActions';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { LineChart, Line, Tooltip, XAxis, YAxis } from 'recharts';
 
 const DataList = styled.ul`
-  width: 600px;
-  height: 300px;
+  width: 750px;
+  height: 450px;
   overflow: scroll;
-  border: 1px solid cyan;
 `;
 
 const FetchButton = styled.div`
+  padding: 5px;
+  color: white;
   display: block;
-  border: 1px solid cyan;
+  border-radius: 10px;
+  transition: 0.3s all;
+  border: 2px solid white;
   &:hover {
+    color: black;
     cursor: pointer;
+    background-color: white;
   }
 `;
 
@@ -36,20 +41,33 @@ class Data extends React.Component {
   renderData(entries) {
     const newArr = entries.slice(Math.max(entries.length - 365, 1));
 
-    console.log(newArr);
+    let chartData = [];
+
+    newArr.forEach((entry, index) => {
+      let obj = {};
+      let newDate = new Date(entry.date).toLocaleDateString("en-US");
+
+      obj.index = index;
+      obj.value = entry.close;
+      obj.date = newDate;
+
+
+      chartData.push(obj);
+    });
 
     return (
-      <LineChart width={600} height={300} date={newArr}>
-        <Line type='monotone' dataKey='close' stroke='#8884d8' />
-        <CartesianGrid srtoke='#ccc' />
-        <XAxis dataKey='date' />
-        <YAxis />
+      <LineChart width={700} height={400} data={chartData}>
+        <Tooltip cursor={false} formatter={(value) => ['$' + value, 'Price']} />
+        <Line strokeWidth={3} type="monotone" dot={false} dataKey="value" stroke="#8884d8" />
+        <XAxis hide={true} dataKey='date' />
+        <YAxis
+        axisLine={false}
+        tickLine={false}
+        tick={{fill: 'white'}}
+        tickFormatter={(tick) => '$' + tick}
+        />
       </LineChart>
     );
-
-    // return newArr.map((entry, index) => {
-    //   return <li key={index}>{entry.close}</li>
-    // });xz
   }
 
   render() {
