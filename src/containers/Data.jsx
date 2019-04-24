@@ -59,12 +59,20 @@ class Data extends React.Component {
       <LineChart width={700} height={400} data={chartData}>
         <Tooltip cursor={false} formatter={(value) => ['$' + value, 'Price']} />
         <Line strokeWidth={3} type="monotone" dot={false} dataKey="value" stroke="#8884d8" />
-        <XAxis hide={true} dataKey='date' />
+        <XAxis
+          dataKey='date'
+          axisLine={false}
+          tickLine={false}
+          tick={{fill: 'white'}}
+          angle={-25}
+          textAnchor="end"
+          height={50}
+        />
         <YAxis
-        axisLine={false}
-        tickLine={false}
-        tick={{fill: 'white'}}
-        tickFormatter={(tick) => '$' + tick}
+          axisLine={false}
+          tickLine={false}
+          tick={{fill: 'white'}}
+          tickFormatter={(tick) => '$' + tick}
         />
       </LineChart>
     );
