@@ -35,7 +35,7 @@ class Data extends React.Component {
   }
 
   fetchData() {
-    this.props.dataActions.dataFetch('IBM');
+    this.props.dataActions.dataFetch('AMZN');
   }
 
   renderData(entries) {

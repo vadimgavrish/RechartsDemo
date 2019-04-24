@@ -25,7 +25,7 @@ class App extends React.Component {
   render() {
     return (
       <Wrapper>
-        <Title>Stock Price of IBM</Title>
+        <Title>Stock Price of AMZN</Title>
         <Data />
       </Wrapper>
     );
