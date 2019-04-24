@@ -4,5 +4,5 @@
 ## 2. `npm run start`
 
 ## Screenshots
-![AAPL](/screenshots/1.png)
-![IBM](/screenshots/2.png)
+![AAPL](/screenshots/AAPL.png)
+![IBM](/screenshots/AMZN.png)
