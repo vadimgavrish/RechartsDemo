@@ -4,9 +4,10 @@ import styled from 'styled-components'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as dataActions from '../redux/actions/dataActions';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
 
 const DataList = styled.ul`
-  width: 500px;
+  width: 600px;
   height: 300px;
   overflow: scroll;
   border: 1px solid cyan;
@@ -34,9 +35,21 @@ class Data extends React.Component {
 
   renderData(entries) {
     const newArr = entries.slice(Math.max(entries.length - 365, 1));
-    return newArr.map((entry, index) => {
-      return <li key={index}>{entry.close}</li>
-    });
+
+    console.log(newArr);
+
+    return (
+      <LineChart width={600} height={300} date={newArr}>
+        <Line type='monotone' dataKey='close' stroke='#8884d8' />
+        <CartesianGrid srtoke='#ccc' />
+        <XAxis dataKey='date' />
+        <YAxis />
+      </LineChart>
+    );
+
+    // return newArr.map((entry, index) => {
+    //   return <li key={index}>{entry.close}</li>
+    // });xz
   }
 
   render() {
