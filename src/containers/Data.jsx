@@ -35,7 +35,7 @@ class Data extends React.Component {
   }
 
   fetchData() {
-    this.props.dataActions.dataFetch('AAPL');
+    this.props.dataActions.dataFetch('IBM');
   }
 
   renderData(entries) {
@@ -48,7 +48,7 @@ class Data extends React.Component {
       let newDate = new Date(entry.date).toLocaleDateString("en-US");
 
       obj.index = index;
-      obj.value = entry.close;
+      obj.value = entry.close.toFixed(2);
       obj.date = newDate;
 
 
@@ -57,7 +57,7 @@ class Data extends React.Component {
 
     return (
       <LineChart width={700} height={400} data={chartData}>
-        <Tooltip cursor={false} formatter={(value) => ['$' + value, 'Price']} />
+        <Tooltip cursor={false} formatter={value => ['$' + value, 'Price']} />
         <Line strokeWidth={3} type="monotone" dot={false} dataKey="value" stroke="#8884d8" />
         <XAxis
           dataKey='date'
@@ -69,10 +69,12 @@ class Data extends React.Component {
           height={50}
         />
         <YAxis
+          width={150}
           axisLine={false}
           tickLine={false}
           tick={{fill: 'white'}}
           tickFormatter={(tick) => '$' + tick}
+          domain={['dataMin', 'dataMax']}
         />
       </LineChart>
     );
